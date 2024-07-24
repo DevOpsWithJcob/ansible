@@ -1,0 +1,5 @@
+---
+- name: start docker containers
+  command: docker compose -f /root/CTI/docker-compose.yml up -d 
+  args:
+    chdir: /root/CTI

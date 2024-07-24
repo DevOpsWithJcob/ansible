@@ -1,0 +1,9 @@
+version: '3.7'
+
+services:
+  web:
+    image: focker.ir/nginx:latest
+    ports:
+      - "8888:80"
+    volumes:
+      - ./static:/usr/share/nginx/html

@@ -1,0 +1,10 @@
+---
+- name: ensure /root/CTI exists
+  file:
+    path: /root/CTI
+    state: directory
+
+- name: copy docker-compose.yml to server
+  copy:
+    src: files/docker-compose.yml
+    dest: /root/CTI/docker-compose.yml

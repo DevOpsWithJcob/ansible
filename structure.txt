@@ -1,0 +1,26 @@
+.
+├── ansible.cfg
+├── group_vars
+│   ├── all
+│   ├── log
+│   └── web
+├── host_vars
+│   ├── host1
+│   ├── host2
+│   └── host3
+├── inventory
+├── playbooks
+│   ├── dc-h1.hosts
+│   └── dc-h2.hosts
+├── roles
+│   ├── app
+│   ├── firewall
+│   ├── git
+│   ├── log
+│   ├── mysql
+│   ├── nginx
+│   └── ssh
+├── structure.txt
+└── vars
+
+7 directories, 17 files

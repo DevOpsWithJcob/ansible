@@ -1,0 +1,57 @@
+---
+- name: Install zip package
+  apt:
+    name: zip
+    state: present
+
+- name: Check Ubuntu version
+  command: lsb_release -rs
+  register: ubuntu_version
+
+- name: Set docker_install_zip variable based on Ubuntu version
+  set_fact:
+    docker_install_zip: "docker_install_{{ ubuntu_version.stdout }}.zip"
+
+- name: Copy appropriate Docker installation zip file
+  copy:
+    src: "{{ docker_install_zip }}"
+    dest: /tmp/
+  when: ubuntu_version.stdout in ['22.04', '24.04']
+
+- name: Create extraction directory
+  file:
+    path: /tmp/docker_install_{{ ubuntu_version.stdout }}
+    state: directory
+  when: ubuntu_version.stdout in ['22.04', '24.04']
+
+- name: Unzip Docker installation files
+  unarchive:
+    src: /tmp/{{ docker_install_zip }}
+    dest: /tmp/docker_install_{{ ubuntu_version.stdout }}
+    remote_src: yes
+  when: ubuntu_version.stdout in ['22.04', '24.04']
+
+- name: Install Docker packages for Ubuntu 22.04
+  command: >
+    dpkg -i
+    /tmp/docker_install_22.04/containerd.io_1.7.19-1_amd64.deb
+    /tmp/docker_install_22.04/docker-buildx-plugin_0.15.1-1~ubuntu.22.04~jammy_amd64.deb
+    /tmp/docker_install_22.04/docker-ce_27.0.3-1~ubuntu.22.04~jammy_amd64.deb
+    /tmp/docker_install_22.04/docker-ce-cli_27.0.3-1~ubuntu.22.04~jammy_amd64.deb
+    /tmp/docker_install_22.04/docker-compose-plugin_2.28.1-1~ubuntu.22.04~jammy_amd64.deb
+  when: ubuntu_version.stdout == '22.04'
+
+- name: Install Docker packages for Ubuntu 24.04
+  command: >
+    dpkg -i
+    /tmp/docker_install_24.04/containerd.io_1.7.19-1_amd64.deb
+    /tmp/docker_install_24.04/docker-buildx-plugin_0.15.1-1~ubuntu.24.04~noble_amd64.deb
+    /tmp/docker_install_24.04/docker-ce_27.0.3-1~ubuntu.24.04~noble_amd64.deb
+    /tmp/docker_install_24.04/docker-ce-cli_27.0.3-1~ubuntu.24.04~noble_amd64.deb
+    /tmp/docker_install_24.04/docker-compose-plugin_2.28.1-1~ubuntu.24.04~noble_amd64.deb
+  when: ubuntu_version.stdout == '24.04'
+
+- name: Fail if the Ubuntu version is unsupported
+  fail:
+    msg: "Unsupported Ubuntu version: {{ ubuntu_version.stdout }}. Only 22.04 and 24.04 are supported."
+  when: ubuntu_version.stdout not in ['22.04', '24.04']

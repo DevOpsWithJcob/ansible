@@ -1,0 +1,17 @@
+ubuntu 22.04 jammy/pool/stable:
+
+https://download.docker.com/linux/ubuntu/dists/jammy/pool/stable/amd64/containerd.io_1.7.19-1_amd64.deb
+https://download.docker.com/linux/ubuntu/dists/jammy/pool/stable/amd64/docker-buildx-plugin_0.15.1-1~ubuntu.22.04~jammy_amd64.deb
+https://download.docker.com/linux/ubuntu/dists/jammy/pool/stable/amd64/docker-ce-cli_27.0.3-1~ubuntu.22.04~jammy_amd64.deb
+https://download.docker.com/linux/ubuntu/dists/jammy/pool/stable/amd64/docker-ce_27.0.3-1~ubuntu.22.04~jammy_amd64.deb
+https://download.docker.com/linux/ubuntu/dists/jammy/pool/stable/amd64/docker-compose-plugin_2.28.1-1~ubuntu.22.04~jammy_amd64.deb
+
+
+ubuntu 24.04 noble/pool/stable:
+
+wget https://download.docker.com/linux/ubuntu/dists/noble/pool/stable/amd64/containerd.io_1.7.19-1_amd64.deb
+wget https://download.docker.com/linux/ubuntu/dists/noble/pool/stable/amd64/docker-buildx-plugin_0.15.1-1~ubuntu.24.04~noble_amd64.deb
+wget https://download.docker.com/linux/ubuntu/dists/noble/pool/stable/amd64/docker-ce-cli_27.0.3-1~ubuntu.24.04~noble_amd64.deb
+wget https://download.docker.com/linux/ubuntu/dists/noble/pool/stable/amd64/docker-ce_27.0.3-1~ubuntu.24.04~noble_amd64.deb
+wget https://download.docker.com/linux/ubuntu/dists/noble/pool/stable/amd64/docker-compose-plugin_2.28.1-1~ubuntu.24.04~noble_amd64.deb
+

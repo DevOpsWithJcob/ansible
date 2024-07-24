@@ -1,0 +1,5 @@
+---
+- name: check if nginx is installed
+  command: nginx -v
+  register: nginx_installed
+  ignore_errors: yes

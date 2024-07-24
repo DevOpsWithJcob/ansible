@@ -1,0 +1,26 @@
+---
+all:
+  hosts:
+    db:
+      ansible_host: 192.168.1.100
+    nginx:
+      ansible_host: 192.168.1.101
+    django:
+      ansible_host: 192.168.1.102
+
+db:
+  hosts:
+    django:
+      ansible_host: 192.168.1.100
+
+nginx:
+  hosts:
+    nginx:
+      ansible_host: 192.168.1.101
+
+app:
+  hosts:
+    django:
+      ansible_host: 192.168.1.102
+
+  

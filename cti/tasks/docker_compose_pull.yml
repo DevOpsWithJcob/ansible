@@ -1,0 +1,10 @@
+---
+- name: install docker compose
+  apt:
+    name: docker-compose
+    state: present
+
+- name: Pull docker images
+  command: docker-compose -f /root/CTI/docker-compose.yml Pull
+  args:
+    chdir: /root/CTI

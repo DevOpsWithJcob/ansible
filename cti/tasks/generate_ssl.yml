@@ -1,0 +1,8 @@
+---
+- name: ensure /etc/nginx/ssl exists
+  file:
+    path: /etc/nginx/ssl
+    state: directory
+
+- name: generate self-signed SSL certificate
+  command: openssl req -new -newkey rsa:4096 -days 365 -nodes -x509 -subj "/C=US/ST=Denial/L=Springfield/O=Dis/CN=www.example.com" -keyout /etc/nginx/ssl/certificate.key -out /etc/nginx/ssl/certificate.crt

@@ -1,0 +1,13 @@
+---
+- name: copy nginx configs
+  copy:
+    src: files/nginx.conf
+    dest: /etc/nginx/sites-available/default
+
+- name: ensure nginx configs are valid
+  command: nginx -t
+
+- name: reload nginx
+  service:
+    name: nginx
+    state: reloaded

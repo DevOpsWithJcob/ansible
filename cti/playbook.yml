@@ -1,0 +1,12 @@
+---
+- hosts: webserver
+  become: yes
+  tasks:
+    - import_tasks: tasks/check_nginx.yml
+    - import_tasks: tasks/install_nginx.yml
+    - import_tasks: tasks/generate_ssl.yml
+    - import_tasks: tasks/setup_docker_compose.yml
+    # - import_tasks: tasks/install_docker.yml
+    # - import_tasks: tasks/docker_compose_pull.yml
+    - import_tasks: tasks/docker_compose_up.yml
+    - import_tasks: tasks/setup_nginx_config.yml
